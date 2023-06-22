@@ -4,14 +4,13 @@
 #include <ranges>
 #include <algorithm>
 #include "visualizer_lib.h"
-#include "beep.h"
 
 #define WINDOW_SCALE 5
 #define FREQ_SCALER 40
 #define FREQ_OFFSET 1400
 #define N 100
 #define N_RANGE 100
-#define AUDIO false
+
 
 void draw_state(
     std::vector<int>& v,
@@ -42,14 +41,12 @@ int algorithm_visualizer(){
     for(int i = 0; i < N; i++){
         v.push_back(d(rd));
     }
-    SDL_Window* window = nullptr;
-    SDL_Renderer* renderer = nullptr;
-    SDL_CreateWindowAndRenderer(100*WINDOW_SCALE, 100*WINDOW_SCALE, 0, &window, &renderer);
+    SDL_Window* window = SDL_CreateWindow("Window Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 100*WINDOW_SCALE, 100*WINDOW_SCALE, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_RenderSetScale(renderer, 1*WINDOW_SCALE, 1*WINDOW_SCALE);
-    SDL_Init(SDL_INIT_AUDIO);
     // Sort algorithm
 
-    while (!quit){
+    
         while(SDL_PollEvent(&e) != 0){
             if(e.type == SDL_QUIT){
                 quit = true;
@@ -69,27 +66,27 @@ int algorithm_visualizer(){
 
             //Show to window
             //
-            #if AUDIO
-            beep_f((N_RANGE - v[j])*FREQ_SCALER+FREQ_OFFSET, RENDER_DELAY);
-            #endif
             SDL_RenderPresent(renderer);
         }
-    }
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+
+    
+ 
         }
+             if(std::is_sorted(v.begin(), v.end())){
+          std::cout << "Vector is sorted" << std::endl;
+              SDL_DestroyRenderer(renderer);
+              SDL_DestroyWindow(window);
+              SDL_Quit();
+              return 0;
+
+        } else return 1;
     }
     
-
-    for(int i : v){
-        std::cout << i << " ";
-    }
 
     //check if sorted
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    SDL_Quit();
+
     return 0;
 }

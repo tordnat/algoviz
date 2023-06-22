@@ -3,6 +3,6 @@ Implementations of simple algorithms with visualisations using SDL2
 
 ## TODO
 
-- Separate algorithm and drawing libraries
-- Implement support for several iterators
-++ ease of use
+- Implement Visual Vector casted from vector
+- Include move and access counter
+- Include timer

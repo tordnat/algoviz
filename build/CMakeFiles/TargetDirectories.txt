@@ -1,0 +1,5 @@
+/Users/tordnatlandsmyr/Desktop/algoviz/build/CMakeFiles/VizLib.dir
+/Users/tordnatlandsmyr/Desktop/algoviz/build/CMakeFiles/VisualVector.dir
+/Users/tordnatlandsmyr/Desktop/algoviz/build/CMakeFiles/AlgViz.dir
+/Users/tordnatlandsmyr/Desktop/algoviz/build/CMakeFiles/edit_cache.dir
+/Users/tordnatlandsmyr/Desktop/algoviz/build/CMakeFiles/rebuild_cache.dir

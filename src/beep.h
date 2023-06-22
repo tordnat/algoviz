@@ -1,1 +1,0 @@
-int beep_f(double Hz, int duration);

@@ -10,3 +10,4 @@ int main(){
     algorithm_visualizer();
     return 0;
 }
+
